@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Gửi BTran thông điệp của ngày hôm nay ♥♥ </title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffe4e1; /* Màu hồng nhạt */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #333;
+        }
+
+        .icon-envelope {
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 100px;
+            color: #555;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .icon-envelope:hover {
+            transform: scale(1.2);
+            color: #333;
+        }
+
+        .message-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 20px;
+            background: #fff;
+            border: 2px solid #ff69b4; /* Viền màu hồng */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            text-align: center;
+        }
+
+        .flower {
+            position: absolute;
+            font-size: 24px;
+            color: #ff69b4;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gửi BTran thông điệp của ngày hôm nay ♥♥</h1>
+        <div class="icon-envelope" onclick="showMessage()">
+            &#128233; <!-- Icon phong bì -->
+        </div>
+        <div class="message-box" id="message-box">
+            <p>Nếu em không biết em tuyệt vời như nào , hi vọng sẽ có dịp anh nói em nghe.</p>
+            <p>Nếu em khong biết em xinh đẹp đáng iu như nào thì giờ em biết rùi đấy :3 Tự tin lên Bé dthw s1q12 mà <p>
+        </div>
+    </div>
+    <script>
+        function showMessage() {
+            const messageBox = document.getElementById('message-box');
+            messageBox.style.display = 'block';
+
+            // Tạo hiệu ứng bông hoa trên toàn bộ trang web
+            for (let i = 0; i < 30; i++) {
+                const flower = document.createElement('div');
+                flower.className = 'flower';
+                flower.style.left = Math.random() * 100 + '%';
+                flower.style.top = Math.random() * 100 + 'vh';
+                flower.style.animationDelay = Math.random() * 3 + 's';
+                flower.innerHTML = '🌸'; // Icon bông hoa
+                document.body.appendChild(flower);
+
+                // Xóa bông hoa sau khi hiệu ứng kết thúc
+                setTimeout(() => {
+                    flower.remove();
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>
