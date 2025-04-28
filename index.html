@@ -1,107 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merry Christmas</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: radial-gradient(circle, #ff7f50, #ff6347, #e6194B);
-            overflow: hidden;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            color: white;
-            text-align: center;
-        }
-        h1 {
-            font-size: 4em;
-            margin-top: 20px;
-            text-shadow: 0 0 20px #ffd700, 0 0 40px #ff4500;
-        }
-        #tree {
-            margin: 50px auto;
-            font-size: 15em;
-            cursor: pointer;
-        }
-        #gifts {
-            margin-top: 20px;
-            font-size: 3em;
-        }
-        #messageBox {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #333;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-            display: none;
-            z-index: 1000;
-        }
-        #closeButton {
-            margin-top: 10px;
-            padding: 5px 10px;
-            background-color: #ff6347;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .snowflake {
-            position: absolute;
-            top: -10px;
-            font-size: 1em;
-            color: white;
-            animation: fall linear infinite;
-        }
-        @keyframes fall {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Chúc Mừng Sinh Nhật!</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffc0cb, #ffe4e1);
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    h1 {
+      font-size: 3em;
+      color: #d6336c;
+      margin-bottom: 20px;
+    }
+    .cake-area {
+      position: relative;
+      text-align: center;
+      cursor: pointer;
+    }
+    .cake-icon {
+      font-size: 100px;
+      color: #ff69b4;
+    }
+    .flame-icon {
+      font-size: 40px;
+      color: orange;
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: flicker 1s infinite;
+    }
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 99;
+    }
+    #popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      z-index: 100;
+    }
+    #popup h2 {
+      color: #d6336c;
+      margin-bottom: 20px;
+    }
+    #popup button {
+      padding: 10px 20px;
+      background: #ff69b4;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    .hint {
+      margin-top: 10px;
+      font-size: 1.2em;
+      color: #d6336c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: bounce 1s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    /* Confetti điểm nhấn */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #ff69b4;
+      top: -10px;
+      animation: fall 3s linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Merry Christmas!</h1>
-    <div id="tree" onclick="showMessage()" >🎄</div>
-    <div id="gifts"onclick="showMessage()">🎁🎁🎁</div>
-    <div id="messageBox">
-        <p>Hellooooo chúc mừng giáng sinhhhhh.Vậy là blindbox cúi cùng cũng mở rùiiiii.Chúc em 1 mùa giáng sinh anh lành hạnh phúc.Mong trời lạnh thì em sẽ bớt khóc hơn chẳng hạn hehehe.Tóm gọn là bbi Marry Christmas!!!!!!</p>
-        <button id="closeButton" onclick="closeMessage()">Đóng</button>
-    </div>
-    <script>
-        function createSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.className = 'snowflake';
-            snowflake.textContent = '❄';
-            snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
-            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
 
-            document.body.appendChild(snowflake);
+  <h1>🎉 Chúc Mừng Sinh Nhật! 🎉</h1>
 
-            setTimeout(() => {
-                snowflake.remove();
-            }, 5000);
-        }
+  <div class="cake-area" onclick="toggleFlame()">
+    <div id="flame" class="flame-icon">🔥</div>
+    <div class="cake-icon">🎂</div>
+  </div>
 
-        setInterval(createSnowflake, 100);
+  <div class="hint" id="hint">
+    👉 Hãy thổi nến!
+  </div>
 
-        function showMessage() {
-            document.getElementById('messageBox').style.display = 'block';
-        }
+  <div id="overlay"></div>
 
-        function closeMessage() {
-            document.getElementById('messageBox').style.display = 'none';
-        }
-    </script>
+  <div id="popup">
+    <h2>hallu người đẹp ơiiiii, chúc em có 1 ngày sinh nhật thiệt là vui vẻ và ý nghĩa bên người thân và gia đình nhen, tuổi mới thêm niềm vui mới muốn gì là được đó nè happy birthday em ❤️  </h2>
+    <button onclick="closePopup()">Đóng</button>
+  </div>
+
+  <script>
+    let flameOn = true;
+
+    function toggleFlame() {
+      const flame = document.getElementById('flame');
+      if (flameOn) {
+        flame.style.display = 'none';  // Thổi tắt ngọn lửa
+        showPopup();
+        launchConfetti();
+        flameOn = false;
+      } else {
+        flame.style.display = 'block'; // Bật ngọn lửa lại
+        flameOn = true;
+      }
+    }
+
+    function showPopup() {
+      document.getElementById('popup').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+      document.querySelectorAll('.confetti').forEach(e => e.remove());
+    }
+
+    function launchConfetti() {
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confetti.style.backgroundColor = ['#ff69b4', '#ffb6c1', '#ffc0cb', '#ffe4e1'][Math.floor(Math.random() * 4)];
+        confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
+        document.body.appendChild(confetti);
+      }
+    }
+  </script>
+
 </body>
 </html>
